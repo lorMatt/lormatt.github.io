@@ -1,9 +1,10 @@
 ---
 title: "Inequality and poverty report"
-author: "Lorenzo Mattioli"
+lang: en_GB
 format: 
   html:
-    page-layout: article
+    toc: true
+    page-layout: full
     code-tools: 
       source: https://github.com/lorMatt/SHIW-BI-2024
     code-fold: true
@@ -12,6 +13,8 @@ editor: visual
 execute: 
   warning: false
 ---
+
+## Introduction
 
 ```{r}
 #| code-fold: true
@@ -220,14 +223,13 @@ lpmresults <- lpmresults |>
 lpmresults$vars <- c('Intercetta', 'Titolo di studio', 'Titolo di studio', 'Titolo di studio', 'Titolo di studio', 'Titolo di studio', 'Sesso', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale')
 ```
 
-RxR - una Regione per Restare commissioned a research project on economic inequality in Italy, with a specific focus Umbria, its main region of interest. The complete report is available at ***report link*** (in Italian), while the source code is available on github.
+RxR - una Regione per Restare commissioned a research project on economic inequality in Italy, with a specific focus Umbria, its main region of interest. The complete report is available at ***forthcoming*** (in Italian), while the source code is available on github.
 
 Below is a selection of the data visualization work involved (translated to English). The project was conducted using R, interactive plots and maps are realised using the *ggiraph* package.
 
 ## Mapping inequality and poverty
 
 ```{r}
-#| column: screen
 #| code-fold: true
 #| label: incGini map
 
@@ -256,10 +258,11 @@ incGiniGG <- incMap |>
         axis.ticks.y=element_blank(),
         panel.grid = element_blank(),
         legend.title = element_blank(),
-        plot.title = element_text(size = 15,
+        plot.title = element_text(size = 20,
                                   hjust = .5),
-        plot.subtitle = element_text(hjust = .5),
-        plot.caption = element_text(size = 9,
+        plot.subtitle = element_text(size = 15,
+                                     hjust = .5),
+        plot.caption = element_text(size = 10,
                                     hjust = .5))
 
 
@@ -282,7 +285,6 @@ girafe(ggobj = incGiniGG,
 ```
 
 ```{r}
-#| column: screen
 #| code-fold: true
 #| label: hCount map
 pov$ireg <- gsub(' - ', '-', pov$ireg)
@@ -306,10 +308,11 @@ povhGG <- povMap |>
         axis.ticks.y=element_blank(),
         panel.grid = element_blank(),
         legend.title = element_blank(),
-        plot.title = element_text(size = 15,
+        plot.title = element_text(size = 20,
                                   hjust = .5),
-        plot.subtitle = element_text(hjust = .5),
-        plot.caption = element_text(size = 9,
+        plot.subtitle = element_text(size = 15,
+                                     hjust = .5),
+        plot.caption = element_text(size = 10,
                                     hjust = .5))
 
 
@@ -333,7 +336,6 @@ girafe(ggobj = povhGG,
 ## Ranking regions by inequality indexes and poverty
 
 ```{r}
-#| column: screen-inset
 #| layout-nrow: 1
 #| code-fold: true
 #| label: incGini ranking bump
@@ -369,10 +371,11 @@ giniInc |>
   theme(
     legend.position = 'none',
     panel.grid = element_blank(),
-    plot.title = element_text(size = 15,
+    plot.title = element_text(size = 20,
                               hjust = .5),
-    plot.subtitle = element_text(hjust = .5),
-    plot.caption = element_text(size = 8,
+    plot.subtitle = element_text(size = 15,
+                                 hjust = .5),
+    plot.caption = element_text(size = 10,
                                 hjust = .5)
   )
 
@@ -403,10 +406,11 @@ pov |>
     theme(
       legend.position = 'none',
       panel.grid = element_blank(),
-      plot.title = element_text(size = 15,
+      plot.title = element_text(size = 20,
                            hjust = .5),
-      plot.subtitle = element_text(hjust = .5),
-      plot.caption = element_text(size = 8,
+      plot.subtitle = element_text(size = 15,
+                                   hjust = .5),
+      plot.caption = element_text(size = 10,
                                   hjust = .5)
     )
 ```
@@ -414,7 +418,6 @@ pov |>
 ## Investigating causes of poverty through LPM modeling
 
 ```{r}
-#| column: screen-inset
 #| code-fold: true
 #| label: LPM caterpillar plot
 lpmresults$vars <- factor(lpmresults$vars, levels=unique(lpmresults$vars))
@@ -427,22 +430,24 @@ gglpm <- lpmresults |>
              linewidth = 0.4,
              color = 'gray70') +
   geom_linerange_interactive(aes(xmin=`2.5 %`,xmax=`97.5 %`), linewidth = .6) +
-  geom_point_interactive(size = 4) +
-  geom_point(colour = 'white', size = 2) +
-  geom_point_interactive(aes(x = `2.5 %`), shape = '|', size = 4) +
-  geom_point_interactive(aes(x = `97.5 %`), shape = '|', size = 4) +
+  geom_point_interactive(size = 6) +
+  geom_point(colour = 'white', size = 3) +
+  geom_point_interactive(aes(x = `2.5 %`), shape = '|', size = 6) +
+  geom_point_interactive(aes(x = `97.5 %`), shape = '|', size = 6) +
   labs(x = NULL, y = NULL,
-       title = 'Probability of falling below relative poverty line based on head of household\'s educational attainment',
+       title = 'Probability of relative poverrty based on head of household\'s educational attainment',
        subtitle = 'Reference category: post-lauream specialisation',
        caption = 'Data: Bank of Italy. Elaborated by Lorenzo Mattioli - Una Regione per Restare') +
   scale_color_manual(values = met.brewer('Degas')) +
   theme_minimal(base_family = 'Helvetica') +
   theme(panel.grid = element_line(),
         legend.position = 'none',
-        plot.title = element_text(size = 15,
-                                  hjust = 1),
-        plot.subtitle = element_text(hjust = -.065),
-        plot.caption = element_text(size = 8,
+        axis.text = element_text(size = 13),
+        plot.title = element_text(size = 20,
+                                  hjust = 0),
+        plot.subtitle = element_text(size = 15,
+                                     hjust = 0),
+        plot.caption = element_text(size = 10,
                                     hjust = .5))
 
 girafe(ggobj = gglpm,

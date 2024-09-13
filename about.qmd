@@ -1,5 +1,6 @@
 ---
 title: "Lorenzo Mattioli"
+lang: en_GB
 image: profile.jpeg
 about:
   template: trestles
@@ -8,8 +9,8 @@ about:
       href: https://www.instagram.com/ermattaraus/
     - icon: github
       href: https://github.com
-    - icon: email
-      href: lorenzo.mattioli5@studio.unibo.it
+    - icon: envelope
+      href: mailto:lorenzo.mattioli5@studio.unibo.it
 ---
 
 I have a background in Economics, and am now a Master student in Politics and Social Policy at the University of Bologna. In addition to my research activities at university, I am also involved with the association *una Regione per Restare* (RxR) as head of their Social Observatory.

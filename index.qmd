@@ -1,15 +1,25 @@
 ---
 title: ""
+lang: en_GB
 image: backdrop.JPG
 listing:
   contents: posts
   sort: "date desc"
-  type: default
+  type: grid
   categories: false
-  sort-ui: false
-  filter-ui: false
+  sort-ui: true
+  filter-ui: true
+  fields: [image, title, description]
 page-layout: full
 title-block-banner: true
 ---
 
-![](backdrop.JPG){width="4000"}
+::: {.grid style="padding: 20px; place-items: center; margin: 30px;"}
+::: g-col-4
+![](profile.jpeg){style="border-radius: 50%;" fig-align="center" width="240"}
+:::
+
+::: g-col-8
+I am a Master student in Politics and Social Policy at the University of Bologna. My main research interests revolve around social stratification and economic inequality. On this website, you will find a selection of my data analysis projects (both the serious and the *unserious*) as well as some data literacy teaching material. Check out the [about](about.qmd) section to get to know me better.
+:::
+:::

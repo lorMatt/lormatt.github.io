@@ -1,11 +1,13 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   cookie-consent: true
   bread-crumbs: true
   title: "Lorenzo Mattioli"
   navbar:
+    style: docked
     right:
       - text: About
         href: about.qmd
@@ -15,7 +17,7 @@ website:
         href: https://www.instagram.com/ermattaraus/
 format:
   html:
-    theme: litera
+    theme: simplex
     css: styles.css
 
 editor: visual
