@@ -19,5 +19,5 @@ Due to my mixed background, I can count on solid foundations in data analysis an
 My main research interests revolve around social stratification and material inequality, but the *Projects* section of this site will also accommodate some of my less "serious" work, as well as some teaching material.
 
 ::: {#resume .link style="color: gray;"}
-My complete resume is available [*here:*](CV inglese.pdf)
+My complete resume is available [*here:*](CV%20inglese.pdf)
 :::
