@@ -1,6 +1,8 @@
 ---
 title: "Inequality and poverty report"
 lang: en_GB
+categories:
+  - projects
 format: 
   html:
     toc: true
@@ -9,9 +11,11 @@ format:
       source: https://github.com/lorMatt/SHIW-BI-2024
     code-fold: true
     code-summary: 'Show code'
+    date: 15 09 2024
 editor: visual
 execute: 
   warning: false
+  freeze: true
 ---
 
 ## Introduction
@@ -396,7 +400,7 @@ pov |>
     geom_text(aes(label = ireg, group = ireg), colour = 'black', x = 2021, hjust = 0,, size = 3.5, family = 'Helvetica',
               data = ~. |> filter(anno == 2020 & ireg == 'Umbria' | anno == 2020 & ireg == 'Lombardia' | anno == 2020 & ireg == 'Abruzzo')) +
     scale_color_manual(values = met.brewer('Degas')) +
-    scale_x_continuous(limits = c(2000, 2030) ,expand = c(0.01, 0), breaks=c(2000, 2010, 2020)) +
+    scale_x_continuous(limits = c(2000, 2024) ,expand = c(0.01, 0), breaks=c(2000, 2010, 2020)) +
     scale_y_reverse(expand = c(0.02, 0), breaks = c(1, 5, 10, 15, 20)) +
     labs(x = NULL, y = NULL,
          title = 'Ranking Italian regions by poverty rate',

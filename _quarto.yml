@@ -8,13 +8,18 @@ website:
   title: "Lorenzo Mattioli"
   navbar:
     style: docked
-    right:
+    left:
+      - text: Home
+        href: index.qmd
       - text: About
         href: about.qmd
-      - icon: github
-        href: https://github.com/lorMatt
+    right:
       - icon: instagram
         href: https://www.instagram.com/ermattaraus/
+      - icon: github
+        href: https://github.com/lorMatt
+      - icon: envelope
+        href: mailto:lorenzo.mattioli5@studio.unibo.it
 format:
   html:
     theme: simplex

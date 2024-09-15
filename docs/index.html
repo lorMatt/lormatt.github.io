@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -167,10 +167,21 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/ermattaraus/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/lorMatt"> <i class="bi bi-github" role="img">
@@ -178,7 +189,7 @@ window.Quarto = {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.instagram.com/ermattaraus/"> <i class="bi bi-instagram" role="img">
+    <a class="nav-link" href="mailto:lorenzo.mattioli5@studio.unibo.it"> <i class="bi bi-envelope" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -193,11 +204,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="projects">projects <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
@@ -214,29 +223,16 @@ window.Quarto = {
 <p>I am a Master student in Politics and Social Policy at the University of Bologna. My main research interests revolve around social stratification and economic inequality. On this website, you will find a selection of my data analysis projects (both the serious and the <em>unserious</em>) as well as some data literacy teaching material. Check out the <a href="./about.html">about</a> section to get to know me better.</p>
 </div>
 </div>
+<section id="recent-projects" class="level2">
+<h2 class="anchored" data-anchor-id="recent-projects">Recent projects</h2>
 
 
 
+</section>
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="projects" data-listing-file-modified-sort="1726390823633" data-listing-reading-time-sort="21" data-listing-word-count-sort="4167">
+<div class="g-col-1" data-index="0" data-categories="projects" data-listing-file-modified-sort="1726391017807" data-listing-reading-time-sort="21" data-listing-word-count-sort="4167">
 <a href="./posts/RxR Report inequality and poverty/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="posts/RxR Report inequality and poverty/index_files/figure-html/incGini ranking bump-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
