@@ -1,5 +1,6 @@
 ---
 title: "Inequality and poverty report"
+author: 'Lorenzo Mattioli'
 lang: en_GB
 categories:
   - projects

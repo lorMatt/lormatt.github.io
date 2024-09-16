@@ -1,6 +1,8 @@
 ---
 title: "Formula 1"
 author: 'Lorenzo Mattioli'
+categories:
+  - projects
 date: 10 09 2024
 lang: en_UK
 image: logo-F1.png
@@ -219,7 +221,9 @@ tottable <- left_join(tottable, flags, by = join_by('nationality' == `Alpha-2 co
 dtable <- bind_cols(wintable, podtable)
 rm(wintable, podtable)
 ```
+
 The rankings of the most podiums and the most wins do not necessarily coincide. Below are two tables with these two rankings. Below is a web-friendly, responsive table with the corresponding data. In the source code, a print-ready static table is also available.
+
 ```{r}
 #| label: Table design
 #| code-summary: 'Table design'
