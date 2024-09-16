@@ -3,8 +3,10 @@ title: "Formula 1"
 author: 'Lorenzo Mattioli'
 date: 10 09 2024
 lang: en_UK
-code-fold: true
 image: logo-F1.png
+code-fold: true
+execute: 
+  freeze: true
 ---
 
 ## Formula 1
@@ -40,12 +42,7 @@ drivers$nationality <- gsub('-Italian', '', drivers$nationality)
 drivers$nationality <- gsub('East German', 'German', drivers$nationality)
 ## recoding NAs in number column
 drivers$number <- ifelse(drivers$number == '\\N', NA, drivers$number)
-```
 
-```{r}
-#| label: Data prep
-#| code-summary: 'Data prep'
-#| output: false
 # Defining wins and podiums vectors
 wins <- 
 results |> 
@@ -179,61 +176,91 @@ drilldown_chart |>
 
 ## Driver stats
 
-The rankings of the most podiums and the most wins do not necessarily coincide. Below are two tables with these two rankings.
-
 ```{r}
-#| label: Table
-#| code-summary: 'Table design'
+#| label: Code prep
+#| code-summary: 'Code prep'
+#| output: false
 
 # Building df
 wintable <-  drivers |>
-  select(name, nationality, wins) |> 
+  select(name, nationality, wins, podiums) |> 
   filter(!is.na(wins)) |>
   arrange(desc(wins)) |>
-  slice(1:10)
+  slice(1:20)
 podtable <-  drivers |>
-  select(name, nationality, podiums) |> 
+  select(name, nationality, podiums, wins) |> 
   filter(!is.na(podiums)) |>
   arrange(desc(podiums)) |>
-  slice(1:10)
+  slice(1:20)
 
-wintable$nationality <- c('GB', 'DE', 'NL', 'DE', 'FR', 'BR', 'ES', 'GB', 'GB', 'AT')
-podtable$nationality <- c('GB', 'DE', 'DE', 'NL', 'ES', 'FR', 'FI', 'BR', 'BR', 'FI')
+wintable$nationality <- c('GB', 'DE', 'NL', 'DE', 'FR', 'BR', 'ES', 'GB', 'GB', 'AT', 'GB', 'AR', 'DE', 'BR', 'GB', 'FI', 'FI', 'GB', 'GB', 'BR')
+podtable$nationality <- c('GB', 'DE', 'DE', 'NL', 'ES', 'FR', 'FI', 'BR', 'BR', 'FI', 'GB', 'BR', 'GB', 'DE', 'AT', 'FI', 'GB', 'AT', 'AR', 'GB')
+
+tottable <- full_join(wintable, podtable)
 # Country flag images
 flags <- flags |> 
   select(URL, `Alpha-2 code`)
 ## merge
 wintable <- left_join(wintable, flags, by = join_by('nationality' == `Alpha-2 code`)) |> 
   select(name, URL, wins) |> 
-  rename(Name = name,
-         Nationality = URL,
-         Wins = wins)
+  rename(nationality = URL)
 podtable <- left_join(podtable, flags, by = join_by('nationality' == `Alpha-2 code`)) |> 
   select(name, URL, podiums) |> 
   rename(Name = name,
          Nationality = URL,
          Podiums = podiums)
+tottable <- left_join(tottable, flags, by = join_by('nationality' == `Alpha-2 code`)) |>
+  select(name, URL, wins, podiums) |> 
+  rename(Name = name,
+         Nationality = URL,
+         Podiums = podiums,
+         Wins = wins)
 
-wintable |> 
-  gt(rowname_col = 'Name') |> 
-  tab_header(
-    title = md("## F1 drivers with most wins"),
-    subtitle = 'Top ten shown'
-  ) |> 
-  gt_img_rows(columns = Nationality, height = 15) |> 
-  cols_align(
-    align = "center",
-    columns = 2:3)
+dtable <- bind_cols(wintable, podtable)
+rm(wintable, podtable)
+```
+The rankings of the most podiums and the most wins do not necessarily coincide. Below are two tables with these two rankings. Below is a web-friendly, responsive table with the corresponding data. In the source code, a print-ready static table is also available.
+```{r}
+#| label: Table design
+#| code-summary: 'Table design'
+# # Static table
+# dtable |> 
+#   gt() |> 
+#   tab_header(
+#     title = md("## Top ten F1 drivers")
+#   ) |> 
+#   gt_img_rows(columns = Nationality, height = 15) |> 
+#   gt_img_rows(columns = nationality, height = 15) |> 
+#   cols_align(
+#     align = "center",
+#     columns = 2:3) |> 
+#   cols_align(
+#     align = 'center',
+#     columns = 4:5
+#   ) |> 
+#   tab_spanner(label = 'Most wins',
+#               columns = 2:3) |> 
+#   tab_spanner(label = 'Most podiums',
+#               columns = 5:6) |>
+#   gt_theme_538()
 
-podtable |> 
+# Responsive table
+tottable |> 
   gt(rowname_col = 'Name') |> 
-  tab_header(
-    title = md("## F1 drivers with most podiums"),
-    subtitle = 'Top ten shown'
-  ) |> 
-  gt_img_rows(columns = Nationality, height = 15) |> 
-  cols_align(
-    align = "center",
-    columns = 2:3)
+  tab_header(title = html('<h2>Top F1 drivers</h2>'),
+             ) |> 
+  fmt_image(Nationality, height = 15) |> 
+  cols_align(align = 'center', columns = 2:4) |> 
+  opt_interactive(use_pagination = T,
+                  use_sorting = T) |> 
+  tab_options(table.background.color = 'white',
+              table.font.style = 'Roboto',
+              table.border.top.color = 'white',
+              heading.align = 'center',
+              row.striping.include_table_body =FALSE,
+              heading.border.bottom.color = "white",
+              row_group.border.bottom.color = "white",
+              row_group.border.top.color = "white"
+              )
   
 ```
