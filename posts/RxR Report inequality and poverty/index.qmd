@@ -439,7 +439,7 @@ gglpm <- lpmresults |>
   geom_point_interactive(aes(x = `2.5 %`), shape = '|', size = 6) +
   geom_point_interactive(aes(x = `97.5 %`), shape = '|', size = 6) +
   labs(x = NULL, y = NULL,
-       title = 'Probability of relative poverrty based on head of household\'s educational attainment',
+       title = 'Probability of relative poverty based on head of household\'s educational attainment',
        subtitle = 'Reference category: post-lauream specialisation',
        caption = 'Data: Bank of Italy. Elaborated by Lorenzo Mattioli - Una Regione per Restare') +
   scale_color_manual(values = met.brewer('Degas')) +
