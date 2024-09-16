@@ -15,7 +15,7 @@ execute:
 
 My whole family has been forever fascinated with car racing. This short exercise is therefore somewhat of a homage to the discipline.
 
-The following charts were the excuse to try out the packages *highcharter* (for drilldown graphs) and *gt* (for tables). Both were heavily inspired by [Tanya Shapiro](https://tanyaviz.com/)'s work.
+The following charts were the excuse to try out the packages *highcharter* (for drilldown graphs) and *gt* (for tables). Both were heavily inspired by [Tanya Shapiro](https://tanyaviz.com/)'s work. The data used for this project can be found on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).
 
 ```{r}
 #| label: Setup
