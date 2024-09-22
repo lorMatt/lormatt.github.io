@@ -9,6 +9,7 @@ code-fold: true
 execute: 
   warning: false
   echo: false
+  freeze: true
 ---
 
 ```{r}
@@ -118,7 +119,7 @@ ggdom <- domdf |>
   geom_sf_text(data = ~. |> filter(dom == 'Perugia'),
                aes(geometry = geometry, label = dom), colour = 'white', size = 3) +
   scale_fill_viridis_c(option = 'inferno', direction = -1) +
-  labs(title = 'Mappatura copertura questionario') +
+  labs(title = 'Questionnaire\'s geographic coverage') +
   theme_void() +
   theme(legend.position = 'none',
         plot.title = element_text(family = 'Helvetica', hjust = .5, size = 20))
@@ -191,6 +192,8 @@ Abitare <- Abitare |>
 
 ```{r}
 #| label: Living satisfaction index
+#| fig-height: 3
+#| fig-width: 6
 # Dataviz ----------------------------------------------------------------------
 ## Index by urban zone
 abPlotZon <- Abitare |> 
@@ -203,6 +206,11 @@ abPlotZon <- Abitare |>
                            levels = zon[order(meanzon)]))
 
 ggPlotZon <- abPlotZon |> 
+  mutate(zon = case_match(zon,
+                          'Periferia' ~ 'Suburbs',
+                          'Centro Cittadino' ~ 'City centre',
+                          'Area Rurale' ~ 'Rural area'
+                          )) |> 
   ggplot(aes(x = zon, y = meanzon, colour = flag, data_id = zon, tooltip = round(meanzon, 2))) +
   geom_point_interactive(size = 6) +
   geom_segment_interactive(aes(y = ovmean, yend = meanzon, x = zon, xend = zon)) +
@@ -243,6 +251,27 @@ The following section tries to answer the main question directly: what brings pe
 
 ```{r}
 #| label: Restare data prep
+## Index recode - abitare
+abRecode <- function(x) {case_match(paste(x),
+        'Per nulla' ~ 1,
+        'Poco' ~ 2,
+        'Abbastanza' ~ 3,
+        'Molto' ~ 4
+      )}
+
+Abitare <- Abitare |> 
+    mutate(across(c(abQual, abCost, abPriv, abVic, abColl),
+                  abRecode
+                  )
+           )
+rm(abRecode)
+
+### Additive index def
+Abitare <- Abitare |> 
+  mutate(abInd = rowSums(across(c(abQual, abCost, abPriv, abVic, abColl)))) |> 
+  mutate(abInd = (abInd-5)/15 * 100) |> 
+  mutate(abInd = round(abInd, 2)) |> 
+  relocate(abInd, .after = abColl)
 
 ### rest factor 
 restRecode <- function(x) {factor(paste(x), levels = c(
