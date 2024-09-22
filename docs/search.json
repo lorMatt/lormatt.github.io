@@ -96,5 +96,54 @@
     "title": "Formula 1",
     "section": "Driver stats",
     "text": "Driver stats\n\n\nCode prep\n# Building df\nwintable &lt;-  drivers |&gt;\n  select(name, nationality, wins, podiums) |&gt; \n  filter(!is.na(wins)) |&gt;\n  arrange(desc(wins)) |&gt;\n  slice(1:20)\npodtable &lt;-  drivers |&gt;\n  select(name, nationality, podiums, wins) |&gt; \n  filter(!is.na(podiums)) |&gt;\n  arrange(desc(podiums)) |&gt;\n  slice(1:20)\n\nwintable$nationality &lt;- c('GB', 'DE', 'NL', 'DE', 'FR', 'BR', 'ES', 'GB', 'GB', 'AT', 'GB', 'AR', 'DE', 'BR', 'GB', 'FI', 'FI', 'GB', 'GB', 'BR')\npodtable$nationality &lt;- c('GB', 'DE', 'DE', 'NL', 'ES', 'FR', 'FI', 'BR', 'BR', 'FI', 'GB', 'BR', 'GB', 'DE', 'AT', 'FI', 'GB', 'AT', 'AR', 'GB')\n\ntottable &lt;- full_join(wintable, podtable)\n# Country flag images\nflags &lt;- flags |&gt; \n  select(URL, `Alpha-2 code`)\n## merge\nwintable &lt;- left_join(wintable, flags, by = join_by('nationality' == `Alpha-2 code`)) |&gt; \n  select(name, URL, wins) |&gt; \n  rename(nationality = URL)\npodtable &lt;- left_join(podtable, flags, by = join_by('nationality' == `Alpha-2 code`)) |&gt; \n  select(name, URL, podiums) |&gt; \n  rename(Name = name,\n         Nationality = URL,\n         Podiums = podiums)\ntottable &lt;- left_join(tottable, flags, by = join_by('nationality' == `Alpha-2 code`)) |&gt;\n  select(name, URL, wins, podiums) |&gt; \n  rename(Name = name,\n         Nationality = URL,\n         Podiums = podiums,\n         Wins = wins)\n\ndtable &lt;- bind_cols(wintable, podtable)\nrm(wintable, podtable)\n\n\nThe rankings of the most podiums and the most wins do not necessarily coincide. Below are two tables with these two rankings. Below is a web-friendly, responsive table with the corresponding data. In the source code, a print-ready static table is also available.\n\n\nTable design\n# # Static table\n# dtable |&gt; \n#   gt() |&gt; \n#   tab_header(\n#     title = md(\"## Top ten F1 drivers\")\n#   ) |&gt; \n#   gt_img_rows(columns = Nationality, height = 15) |&gt; \n#   gt_img_rows(columns = nationality, height = 15) |&gt; \n#   cols_align(\n#     align = \"center\",\n#     columns = 2:3) |&gt; \n#   cols_align(\n#     align = 'center',\n#     columns = 4:5\n#   ) |&gt; \n#   tab_spanner(label = 'Most wins',\n#               columns = 2:3) |&gt; \n#   tab_spanner(label = 'Most podiums',\n#               columns = 5:6) |&gt;\n#   gt_theme_538()\n\n# Responsive table\ntottable |&gt; \n  gt(rowname_col = 'Name') |&gt; \n  tab_header(title = html('&lt;h2&gt;Top F1 drivers&lt;/h2&gt;'),\n             ) |&gt; \n  fmt_image(Nationality, height = 15) |&gt; \n  cols_align(align = 'center', columns = 2:4) |&gt; \n  opt_interactive(use_pagination = T,\n                  use_sorting = T) |&gt; \n  tab_options(table.background.color = 'white',\n              table.font.style = 'Roboto',\n              table.border.top.color = 'white',\n              heading.align = 'center',\n              row.striping.include_table_body =FALSE,\n              heading.border.bottom.color = \"white\",\n              row_group.border.bottom.color = \"white\",\n              row_group.border.top.color = \"white\"\n              )\n\n\n\n\n\nTop F1 drivers"
+  },
+  {
+    "objectID": "posts/RxR Quest_23/Index.html",
+    "href": "posts/RxR Quest_23/Index.html",
+    "title": "RxR Questionnaire - 2023",
+    "section": "",
+    "text": "In 2023, a team of researchers realised a social survey for the Umbrian association una Regione per Restare - RxR. The research focused mainly on two questions:\nAbout a year after the beginning of the survey’s subministration, I was involved as a data analyst, and contributed to the writing of the final report (forthcoming). Below is a selection of my contributions, both in terms of internal and external communication.\nSince the whole work was written in Italian, some of the code and visualisation below may not be translated. I apologise for the inconvenience."
+  },
+  {
+    "objectID": "posts/RxR Quest_23/Index.html#coverage",
+    "href": "posts/RxR Quest_23/Index.html#coverage",
+    "title": "RxR Questionnaire - 2023",
+    "section": "Coverage",
+    "text": "Coverage\n\n\n\n\n\n\n\n\n\nThe main problem with the questionnaire was its coverage. In discussing the problem with the rest of our organisation, this geographical visualisation was the best way to explain the reason behind our hesitation in performing statistical inference.\nThe gray areas are administrative areas (comuni) that we weren’t able to reach with the current resources."
+  },
+  {
+    "objectID": "posts/RxR Quest_23/Index.html#abitare",
+    "href": "posts/RxR Quest_23/Index.html#abitare",
+    "title": "RxR Questionnaire - 2023",
+    "section": "Abitare",
+    "text": "Abitare"
+  },
+  {
+    "objectID": "posts/RxR Quest_23/Index.html#restare",
+    "href": "posts/RxR Quest_23/Index.html#restare",
+    "title": "RxR Questionnaire - 2023",
+    "section": "Restare",
+    "text": "Restare"
+  },
+  {
+    "objectID": "posts/RxR Quest_23/Index.html#should-i-stay-or-should-i-go",
+    "href": "posts/RxR Quest_23/Index.html#should-i-stay-or-should-i-go",
+    "title": "RxR Questionnaire - 2023",
+    "section": "Should I stay or should I go?",
+    "text": "Should I stay or should I go?\nThe following section tries to answer the main question directly: what brings people to leave their home? Why do some still decide to stay?\n\nRelationship to Umbria\n\n\nThe first step of the analysis was purely descriptive: how big is the fraction of our sample which left, or would like to? An infographic-style waffle chart was the best choice to convey meaning keeping sense of scale.\nThe figure was decomposed by occupation, in order to try and catch at least some hints regarding the social composition of the respective groups."
+  },
+  {
+    "objectID": "posts/RxR Quest_23/Index.html#living-conditions",
+    "href": "posts/RxR Quest_23/Index.html#living-conditions",
+    "title": "RxR Questionnaire - 2023",
+    "section": "Living conditions",
+    "text": "Living conditions\nBuilding on the questionnaire’s questions, an index of satisfaction with one’s living conditions was built. All values are expressed in percentage."
+  },
+  {
+    "objectID": "posts/RxR Quest_23/Index.html#reasons-for-staying",
+    "href": "posts/RxR Quest_23/Index.html#reasons-for-staying",
+    "title": "RxR Questionnaire - 2023",
+    "section": "Reasons for staying",
+    "text": "Reasons for staying\nThis last section aimed at finding the exact reasons why people either stay or go. Radar plots were the best way to convey the relative importance of each individual reason."
   }
 ]
