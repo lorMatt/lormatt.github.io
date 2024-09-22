@@ -51,6 +51,7 @@ Since the whole work was written in Italian, some of the code and visualisation 
 
 ```{r}
 #| label: Map data prep
+#| echo: false
 
 ## Domicilio - cleaning
 Abitare$dom <- as.character(Abitare$dom)
@@ -251,6 +252,7 @@ The following section tries to answer the main question directly: what brings pe
 
 ```{r}
 #| label: Restare data prep
+#| echo: false
 ## Index recode - abitare
 abRecode <- function(x) {case_match(paste(x),
         'Per nulla' ~ 1,
@@ -344,7 +346,22 @@ Restare |>
                           'Disoccupat*' ~ 'Unemployed',
                           'Studente' ~ 'Student',
                           'Lavorator*' ~ 'Worker',
-                          'Dottorand*' ~ 'PhD candidate')) |> 
+                          'Dottorand*' ~ 'PhD candidate'),
+         rapp = case_match(rapp,
+                           'Vorrei restare nel posto in cui vivo' ~
+                             'I\'d like to stay where I am',
+                           'Sarei contento di vivere e lavorare altrove' ~
+                             'I\'d like to live and work somewhere else',
+                           'Vorrei restare ma non posso' ~
+                             'I\'d like to stay, but I can\'t',
+                           'Vorrei partire ma non posso' ~
+                             'I\'d like to leave, but I can\'t'),
+         rapp = factor(rapp, levels = c(
+           'I\'d like to stay where I am',
+           'I\'d like to stay, but I can\'t',
+           'I\'d like to leave, but I can\'t',
+           'I\'d like to live and work somewhere else'
+         ))) |> 
   ggplot(aes(values = n, label = rapp, colour = rapp)) +
   geom_pictogram(make_proportional = T, flip = T, size = 6) +
   scale_label_pictogram(
