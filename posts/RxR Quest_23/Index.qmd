@@ -43,9 +43,13 @@ In 2023, a team of researchers realised a social survey for the Umbrian associat
 
 -   Why do some still decide to stay?
 
-About a year after the beginning of the survey's subministration, I was involved as a data analyst, and contributed to the writing of the final report (*forthcoming*). Below is a selection of my contributions, both in terms of internal and external communication.
+As this was the first research project promoted by the association, the sample is patchy and excessively small. Since the survey was administered through snow-balling, there is also an evident self-selection problem (too many students, too many individuals aged 20-25 due to the survey being distributed mainly through universities). These problems have been discussed at length internally and will all be taken into account in future projects. In the meantime, the data was used to conduct a merely descriptive analysis, in order to obtain at list a few hints on the next steps to be taken.
 
-Since the whole work was written in Italian, some of the code and visualisation below may not be translated. I apologise for the inconvenience.
+About a year after the beginning of the survey's distribution, I was involved as a data analyst, and contributed to the writing of the final report (*forthcoming*). Below is a selection of my contributions, both in terms of internal and external communication.
+
+The source code and data is available at the link on the top right, which leads to Lucia Temperini and I's GitHub repository.
+
+Since the whole work was written in Italian, some of the code and graphs below may not be translated. I apologise for the inconvenience.
 
 ## Coverage
 
@@ -103,8 +107,10 @@ domdf <- left_join(domdf,
 
 ```
 
-::: columns
+:::: columns
+
 ::: {.column width="70%"}
+
 ```{r}
 #| label: Coverage map
 
@@ -146,14 +152,54 @@ girafe(ggobj = ggdom,
 
 
 ```
+
 :::
 
 ::: {.column width="30%"}
-The main problem with the questionnaire was its coverage. In discussing the problem with the rest of our organisation, this geographical visualisation was the best way to explain the reason behind our hesitation in performing statistical inference.
+The main problem with the questionnaire was its coverage. In discussing the problem with the rest of our organisation, mapping it out was the best way to explain our dissatisfaction with the results. The tooltip reveals the number of responses in each municipality. The extremely low numbers would be a problem in and of themselves, but the extreme concentration in the city of Perugia (where the University is located) renders the sample impossible to use for statistical inference.
 
-The gray areas are administrative areas (comuni) that we weren't able to reach with the current resources.
+The gray areas are municipalities (*comuni*) that we could not reach at all.
 :::
+
+::::
+
+:::: columns
+
+::: {.column width="30%"}
+
+The extremely unequal socio-demographical composition of the sample did not reassure as in any way. The choice of snow-balling as a distribution method introduced significant self-selection problems, which lead to the situation shown in the figure
+
 :::
+
+::: {.column width="70%"}
+
+```{r}
+#| label: Coverage descriptive
+
+
+### Genere/età/occ
+df |> 
+  mutate(gen = case_match(gen,
+                          'Donna' ~ 'Female',
+                          'Uomo' ~ 'Male',
+                          'Non Binario' ~ 'Non-binary'
+                          )) |> 
+  ggplot(aes(x = class_eta, fill = occ)) +
+  geom_bar() +
+  scale_fill_met_d('Degas', direction = -1) +
+  facet_wrap(vars(gen)) +
+  theme_minimal() +
+  theme(legend.title = element_blank(),
+        legend.position = 'bottom',
+        axis.title = element_blank(),
+        strip.text = element_text(size = 15),
+        plot.title = element_text(hjust = .5, size = 18))
+
+```
+
+:::
+
+::::
 
 ## Living conditions
 
@@ -201,17 +247,16 @@ abPlotZon <- Abitare |>
   filter(prov_dom == 'Terni' | prov_dom == 'Perugia') |> 
   group_by(zon) |>
   summarise(meanzon = mean(abInd)) |> 
+  mutate(zon = case_match(zon,
+                          'Periferia' ~ 'Suburbs',
+                          'Centro Cittadino' ~ 'City centre',
+                          'Area Rurale' ~ 'Rural area')) |> 
   mutate(ovmean = mean(meanzon),
          flag = ifelse(meanzon > ovmean, T, F),
          zon = factor(zon,
                            levels = zon[order(meanzon)]))
 
 ggPlotZon <- abPlotZon |> 
-  mutate(zon = case_match(zon,
-                          'Periferia' ~ 'Suburbs',
-                          'Centro Cittadino' ~ 'City centre',
-                          'Area Rurale' ~ 'Rural area'
-                          )) |> 
   ggplot(aes(x = zon, y = meanzon, colour = flag, data_id = zon, tooltip = round(meanzon, 2))) +
   geom_point_interactive(size = 6) +
   geom_segment_interactive(aes(y = ovmean, yend = meanzon, x = zon, xend = zon)) +
