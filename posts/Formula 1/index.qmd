@@ -4,6 +4,7 @@ author: 'Lorenzo Mattioli'
 categories:
   - projects
 date: 10 09 2024
+format: html
 lang: en_UK
 code-tools: 
       source: https://github.com/lorMatt/Formula-1

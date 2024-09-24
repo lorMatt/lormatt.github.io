@@ -12,8 +12,8 @@ format:
       source: https://github.com/lorMatt/SHIW-BI-2024
     code-fold: true
     code-summary: 'Show code'
-    date: 15 09 2024
 editor: visual
+date: 15 09 2024
 execute: 
   warning: false
   freeze: true

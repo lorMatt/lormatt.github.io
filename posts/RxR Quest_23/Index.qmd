@@ -1,11 +1,14 @@
 ---
 title: 'RxR Questionnaire - 2023'
 author: 'Lorenzo Mattioli'
+image: RxR orizz Nero.png
 categories:
   - projects
-date: 22 09 2024
+date: 01 10 2024
+format: html
 lang: en_UK
 code-fold: true
+lightbox: true
 execute: 
   warning: false
   echo: false
@@ -21,15 +24,18 @@ p_load('tidyverse', 'ggiraph', 'ggplot2', 'readxl', 'gt', 'MetBrewer', 'waffle',
 # Data management --------------------------------------------------------------
 ## Import data
 Abitare <- read_excel("QUEST_DEF.xlsx", 
-                      sheet = "Abitare", skip = 1)
+                      sheet = "Abitare", skip = 1) |> 
+  filter(eta <= 35)
 Restare <- read_excel("QUEST_DEF.xlsx", 
-                      sheet = "Restare", skip = 1)
+                      sheet = "Restare", skip = 1) |> 
+  filter(eta <= 35)
 Lavorare <- read_excel("QUEST_DEF.xlsx", 
-                       sheet = "Lavorare", skip = 1)
+                       sheet = "Lavorare", skip = 1) |> 
+  filter(eta <= 35)
 geoCod <- read_excel("Codici-statistici-e-denominazioni-al-30_06_2024.xlsx")
 
 sf <- read_sf('geoData/ISTAT - confini amministrativi/Com01012024_g/Com01012024_g_WGS84.shp')
-umbriasf <- read_sf('geoData/ISTAT - confini amministrativi/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp') |> 
+umbriasf <- read_sf('geoData/ISTAT - confini amministrativi/ProvCM01012024_g/ProvCM01012024_g_WGS84.shp') |>
   filter(DEN_UTS == 'Terni' | DEN_UTS == 'Perugia')
 
 ## Font import
@@ -43,13 +49,27 @@ In 2023, a team of researchers realised a social survey for the Umbrian associat
 
 -   Why do some still decide to stay?
 
-As this was the first research project promoted by the association, the sample is patchy and excessively small. Since the survey was administered through snow-balling, there is also an evident self-selection problem (too many students, too many individuals aged 20-25 due to the survey being distributed mainly through universities). These problems have been discussed at length internally and will all be taken into account in future projects. In the meantime, the data was used to conduct a merely descriptive analysis, in order to obtain at list a few hints on the next steps to be taken.
+As this was the first research project promoted by the association, the sample is patchy and excessively small. Since the survey was administered through snow-balling, there is also an evident self-selection problem (too many students, too many individuals aged 20-25 due to the survey being distributed mainly through universities). These problems have been discussed at length internally and will all be taken into account in future projects. In the meantime, the data was used to conduct a merely descriptive analysis, in order to obtain at list a few hints on the next steps to be taken. A good portion of this exact work was carried out in order to explain the issues with the data collection process itself to a non-technical audience.
 
 About a year after the beginning of the survey's distribution, I was involved as a data analyst, and contributed to the writing of the final report (*forthcoming*). Below is a selection of my contributions, both in terms of internal and external communication.
 
-The source code and data is available at the link on the top right, which leads to Lucia Temperini and I's GitHub repository.
+Since the whole work was written in Italian, the graphs and charts are not translated. The source code and data is available at the link on the top right, which leads to Lucia Temperini and I's GitHub repository. Although code boxes were included in the post for reference, the final graphics were post-produced in Pixelmator. These are included in the gallery right below, before the actual post.
 
-Since the whole work was written in Italian, some of the code and graphs below may not be translated. I apologise for the inconvenience.
+## Gallery
+
+::: {layout-ncol="3" style="background-color: #1f1f1f;border-radius: .1"}
+![](img/etaOccPlotblack.png){group="render"}
+
+![](img/mapCopblack.png){group="render"}
+
+![](img/etaGenPlotblack.png){group="render"}
+
+![](img/limRestblack.png){group="render"}
+
+![](img/motLascblack.png){group="render"}
+
+![](img/motRestblack.png){group="render"}
+:::
 
 ## Coverage
 
@@ -107,10 +127,6 @@ domdf <- left_join(domdf,
 
 ```
 
-:::: columns
-
-::: {.column width="70%"}
-
 ```{r}
 #| label: Coverage map
 
@@ -131,7 +147,6 @@ ggdom <- domdf |>
   theme(legend.position = 'none',
         plot.title = element_text(family = 'Helvetica', hjust = .5, size = 20))
 
-ggsave('img/mapCop.png', plot = ggdom, width = 8, height = 9)
 
 ### Interactive
 
@@ -153,25 +168,7 @@ girafe(ggobj = ggdom,
 
 ```
 
-:::
-
-::: {.column width="30%"}
 The main problem with the questionnaire was its coverage. In discussing the problem with the rest of our organisation, mapping it out was the best way to explain our dissatisfaction with the results. The tooltip reveals the number of responses in each municipality. The extremely low numbers would be a problem in and of themselves, but the extreme concentration in the city of Perugia (where the University is located) renders the sample impossible to use for statistical inference.
-
-The gray areas are municipalities (*comuni*) that we could not reach at all.
-:::
-
-::::
-
-:::: columns
-
-::: {.column width="30%"}
-
-The extremely unequal socio-demographical composition of the sample did not reassure as in any way. The choice of snow-balling as a distribution method introduced significant self-selection problems, which lead to the situation shown in the figure
-
-:::
-
-::: {.column width="70%"}
 
 ```{r}
 #| label: Coverage descriptive
@@ -197,9 +194,9 @@ df |>
 
 ```
 
-:::
+The gray areas are municipalities (*comuni*) that we could not reach at all.
 
-::::
+The extremely unequal socio-demographical composition of the sample did not reassure as in any way. The choice of snow-balling as a distribution method introduced significant self-selection problems, which lead to the situation shown in the figure
 
 ## Living conditions
 
@@ -369,18 +366,14 @@ rm(Lavorare)
 
 ### Relationship to Umbria
 
-::: columns
-::: {.column width="30%"}
 The first step of the analysis was purely descriptive: how big is the fraction of our sample which left, or would like to? An infographic-style waffle chart was the best choice to convey meaning keeping sense of scale.
 
 The figure was decomposed by occupation, in order to try and catch at least some hints regarding the social composition of the respective groups.
-:::
 
-::: {.column width="70%"}
 ```{r}
 #| label: Relationship to Umbria
 #| fig-width: 5
-#| fig-height: 7
+#| fig-height: 8
 
 ## Rapporto con la regione -----------------------------------------------------
 
@@ -408,9 +401,9 @@ Restare |>
            'I\'d like to live and work somewhere else'
          ))) |> 
   ggplot(aes(values = n, label = rapp, colour = rapp)) +
-  geom_pictogram(make_proportional = T, flip = T, size = 6) +
+  geom_pictogram(make_proportional = T, flip = T, size = 5) +
   scale_label_pictogram(
-    values = c("user")
+    values = c("circle")
     ) +
   scale_color_manual(values = met.brewer('Tiepolo', 4)) +
   facet_wrap(~occ) +
@@ -424,8 +417,6 @@ Restare |>
 
 
 ```
-:::
-:::
 
 ## Reasons for staying
 
@@ -496,7 +487,6 @@ rest |>
         legend.position = 'right',
         legend.title = element_blank(),
         plot.title = element_text(size = 20, hjust = .5))
-ggsave('img/motRest.png', width = 7, height = 5)
 
 ## Motivi per lasciare ---------------------------------------------------------
 

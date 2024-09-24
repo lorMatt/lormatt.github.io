@@ -102,14 +102,14 @@
     "href": "posts/RxR Quest_23/Index.html",
     "title": "RxR Questionnaire - 2023",
     "section": "",
-    "text": "In 2023, a team of researchers realised a social survey for the Umbrian association una Regione per Restare - RxR. The research focused mainly on two questions:\nAs this was the first research project promoted by the association, the sample is patchy and excessively small. Since the survey was administered through snow-balling, there is also an evident self-selection problem (too many students, too many individuals aged 20-25 due to the survey being distributed mainly through universities). These problems have been discussed at length internally and will all be taken into account in future projects. In the meantime, the data was used to conduct a merely descriptive analysis, in order to obtain at list a few hints on the next steps to be taken.\nAbout a year after the beginning of the survey’s distribution, I was involved as a data analyst, and contributed to the writing of the final report (forthcoming). Below is a selection of my contributions, both in terms of internal and external communication.\nThe source code and data is available at the link on the top right, which leads to Lucia Temperini and I’s GitHub repository.\nSince the whole work was written in Italian, some of the code and graphs below may not be translated. I apologise for the inconvenience."
+    "text": "In 2023, a team of researchers realised a social survey for the Umbrian association una Regione per Restare - RxR. The research focused mainly on two questions:\nAs this was the first research project promoted by the association, the sample is patchy and excessively small. Since the survey was administered through snow-balling, there is also an evident self-selection problem (too many students, too many individuals aged 20-25 due to the survey being distributed mainly through universities). These problems have been discussed at length internally and will all be taken into account in future projects. In the meantime, the data was used to conduct a merely descriptive analysis, in order to obtain at list a few hints on the next steps to be taken. A good portion of this exact work was carried out in order to explain the issues with the data collection process itself to a non-technical audience.\nAbout a year after the beginning of the survey’s distribution, I was involved as a data analyst, and contributed to the writing of the final report (forthcoming). Below is a selection of my contributions, both in terms of internal and external communication.\nSince the whole work was written in Italian, the graphs and charts are not translated. The source code and data is available at the link on the top right, which leads to Lucia Temperini and I’s GitHub repository. Although code boxes were included in the post for reference, the final graphics were post-produced in Pixelmator. These are included in the gallery right below, before the actual post."
   },
   {
     "objectID": "posts/RxR Quest_23/Index.html#coverage",
     "href": "posts/RxR Quest_23/Index.html#coverage",
     "title": "RxR Questionnaire - 2023",
     "section": "Coverage",
-    "text": "Coverage\n\n\n\n\n\n\n\n\n\nThe main problem with the questionnaire was its coverage. In discussing the problem with the rest of our organisation, mapping it out was the best way to explain our dissatisfaction with the results. The tooltip reveals the number of responses in each municipality. The extremely low numbers would be a problem in and of themselves, but the extreme concentration in the city of Perugia (where the University is located) renders the sample impossible to use for statistical inference.\nThe gray areas are municipalities (comuni) that we could not reach at all.\n\n\n\n\nThe extremely unequal socio-demographical composition of the sample did not reassure as in any way. The choice of snow-balling as a distribution method introduced significant self-selection problems, which lead to the situation shown in the figure"
+    "text": "Coverage\n\n\n\n\n\n\nThe main problem with the questionnaire was its coverage. In discussing the problem with the rest of our organisation, mapping it out was the best way to explain our dissatisfaction with the results. The tooltip reveals the number of responses in each municipality. The extremely low numbers would be a problem in and of themselves, but the extreme concentration in the city of Perugia (where the University is located) renders the sample impossible to use for statistical inference.\n\n\n\n\n\n\n\n\n\nThe gray areas are municipalities (comuni) that we could not reach at all.\nThe extremely unequal socio-demographical composition of the sample did not reassure as in any way. The choice of snow-balling as a distribution method introduced significant self-selection problems, which lead to the situation shown in the figure"
   },
   {
     "objectID": "posts/RxR Quest_23/Index.html#abitare",
@@ -130,7 +130,7 @@
     "href": "posts/RxR Quest_23/Index.html#should-i-stay-or-should-i-go",
     "title": "RxR Questionnaire - 2023",
     "section": "Should I stay or should I go?",
-    "text": "Should I stay or should I go?\nThe following section tries to answer the main question directly: what brings people to leave their home? Why do some still decide to stay?\n\nRelationship to Umbria\n\n\nThe first step of the analysis was purely descriptive: how big is the fraction of our sample which left, or would like to? An infographic-style waffle chart was the best choice to convey meaning keeping sense of scale.\nThe figure was decomposed by occupation, in order to try and catch at least some hints regarding the social composition of the respective groups."
+    "text": "Should I stay or should I go?\nThe following section tries to answer the main question directly: what brings people to leave their home? Why do some still decide to stay?\n\nRelationship to Umbria\nThe first step of the analysis was purely descriptive: how big is the fraction of our sample which left, or would like to? An infographic-style waffle chart was the best choice to convey meaning keeping sense of scale.\nThe figure was decomposed by occupation, in order to try and catch at least some hints regarding the social composition of the respective groups."
   },
   {
     "objectID": "posts/RxR Quest_23/Index.html#living-conditions",
@@ -145,5 +145,12 @@
     "title": "RxR Questionnaire - 2023",
     "section": "Reasons for staying",
     "text": "Reasons for staying\nThis last section aimed at finding the exact reasons why people either stay or go. Radar plots were the best way to convey the relative importance of each individual reason."
+  },
+  {
+    "objectID": "posts/RxR Quest_23/Index.html#gallery",
+    "href": "posts/RxR Quest_23/Index.html#gallery",
+    "title": "RxR Questionnaire - 2023",
+    "section": "Gallery",
+    "text": "Gallery"
   }
 ]
