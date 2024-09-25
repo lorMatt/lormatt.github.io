@@ -127,6 +127,10 @@ domdf <- left_join(domdf,
 
 ```
 
+The main problem with the questionnaire was its coverage. In discussing the problem with the rest of our organisation, mapping it out was the best way to explain our dissatisfaction with the results. The tooltip reveals the number of responses in each municipality. The extremely low numbers would be a problem in and of themselves, but the extreme concentration in the city of Perugia (where the University is located) renders the sample impossible to use for statistical inference.
+
+The gray areas are municipalities (*comuni*) that we could not reach at all.
+
 ```{r}
 #| label: Coverage map
 
@@ -168,7 +172,7 @@ girafe(ggobj = ggdom,
 
 ```
 
-The main problem with the questionnaire was its coverage. In discussing the problem with the rest of our organisation, mapping it out was the best way to explain our dissatisfaction with the results. The tooltip reveals the number of responses in each municipality. The extremely low numbers would be a problem in and of themselves, but the extreme concentration in the city of Perugia (where the University is located) renders the sample impossible to use for statistical inference.
+The extremely unequal socio-demographical composition of the sample did not reassure us in any way. The choice of snow-balling as a distribution method introduced significant self-selection problems, which lead to the situation shown in the figure
 
 ```{r}
 #| label: Coverage descriptive
@@ -193,10 +197,6 @@ df |>
         plot.title = element_text(hjust = .5, size = 18))
 
 ```
-
-The gray areas are municipalities (*comuni*) that we could not reach at all.
-
-The extremely unequal socio-demographical composition of the sample did not reassure as in any way. The choice of snow-balling as a distribution method introduced significant self-selection problems, which lead to the situation shown in the figure
 
 ## Living conditions
 
