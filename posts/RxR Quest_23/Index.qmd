@@ -5,13 +5,17 @@ image: RxR orizz Nero.png
 categories:
   - projects
 date: 01 10 2024
-format: html
+format: 
+  html:
+    toc: true
+    code-fold: true
+    code-tools: 
+      source: https://github.com/lorMatt/QUEST_23
+    code-summary: 'Show code'
 lang: en_UK
-code-fold: true
 lightbox: true
 execute: 
   warning: false
-  echo: false
   freeze: true
 ---
 
@@ -75,7 +79,6 @@ Since the whole work was written in Italian, the graphs and charts are not trans
 
 ```{r}
 #| label: Map data prep
-#| echo: false
 
 ## Domicilio - cleaning
 Abitare$dom <- as.character(Abitare$dom)
