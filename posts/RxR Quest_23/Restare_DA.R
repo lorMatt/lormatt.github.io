@@ -1,7 +1,6 @@
 if (!require("pacman")) install.packages("pacman"); library(pacman)
 p_load('tidyverse', 'ggiraph', 'ggplot2', 'readxl', 'gt', 'MetBrewer', 'waffle', 'extrafont')
 
-
 # Data management --------------------------------------------------------------
 ## Font import
 font_import (path ="~/Documents/Progetti/RxR/Osservatorio/Data Analysis/QUEST_23", pattern = 'fa-', prompt =  FALSE)
@@ -204,4 +203,3 @@ lasc |>
         legend.title = element_blank(),
         plot.title = element_text(size = 20, hjust = .5))
 ggsave('img/motLasc.png', width = 7, height = 5)
-
