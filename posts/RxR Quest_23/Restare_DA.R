@@ -63,24 +63,12 @@ rm(Lavorare)
 ## Rapporto con la regione -----------------------------------------------------
 
 Restare |> 
-  group_by(rapp, occ) |> 
+  group_by(rapp) |> 
   count() |> 
-  ggplot(aes(values = n, label = rapp, colour = rapp)) +
-  geom_pictogram(make_proportional = T, flip = T, size = 6) +
-  scale_label_pictogram(
-    values = c("user")
-    ) +
-  scale_color_manual(values = met.brewer('Tiepolo', 4)) +
-  facet_wrap(~occ) +
-  labs(title = 'Attitudine al restare') +
-  theme_void() +
-  guides(label=guide_legend(nrow=2, byrow=TRUE)) +
-  theme(legend.title = element_blank(),
-        legend.position = 'bottom',
-        strip.text = element_text(size = 12),
-        plot.title = element_text(size = 20, hjust = .5))
+  mutate(n = n/255*100)
+  waffle(flip = T, reverse = T, legend_pos = 'right')
 
-ggsave('img/attRest.png', width = 5, height = 8, device = png)
+ggsave('img/attRest.pdf', width = 5, height = 6)
 ## Motivi per restare ----------------------------------------------------------
 
 ### graphics df
