@@ -16,7 +16,6 @@ lang: en_UK
 lightbox: true
 execute: 
   warning: false
-  freeze: true
 ---
 
 ```{r}
@@ -55,9 +54,17 @@ In 2023, a team of researchers realised a social survey for the Umbrian associat
 
 As this was the first research project promoted by the association, the sample is patchy and excessively small. Since the survey was administered through snow-balling, there is also an evident self-selection problem (too many students, too many individuals aged 20-25 due to the survey being distributed mainly through universities). These problems have been discussed at length internally and will all be taken into account in future projects. In the meantime, the data was used to conduct a merely descriptive analysis, in order to obtain at list a few hints on the next steps to be taken. A good portion of this exact work was carried out in order to explain the issues with the data collection process itself to a non-technical audience.
 
-About a year after the beginning of the survey's distribution, I was involved as a data analyst, and contributed to the writing of the final report (*forthcoming*). Below is a selection of my contributions, both in terms of internal and external communication.
+About a year after the beginning of the survey's distribution, I was involved as a data analyst, and contributed to the writing of the final [report](Report.pdf). Below is a selection of my contributions, both in terms of internal and external communication.
 
-Since the whole work was written in Italian, the graphs and charts are not translated. The source code and data is available at the link on the top right, which leads to Lucia Temperini and I's GitHub repository. Although code boxes were included in the post for reference, the final graphics were post-produced in Pixelmator. These are included in the gallery right below, before the actual post.
+Since the whole work was written in Italian, the graphs and charts are not translated. The source code and data is available at the link on the top right, which leads to Lucia Temperini and I's GitHub repository. Although code boxes were included in the post for reference, the final graphics were post-produced in Pixelmator. A selection of these are included in the gallery right below, before the actual post.
+
+------------------------------------------------------------------------
+
+::: {#button style="text-align: center;"}
+[Read the print-ready report](Report.pdf)
+:::
+
+------------------------------------------------------------------------
 
 ## Gallery
 
@@ -371,8 +378,6 @@ rm(Lavorare)
 
 The first step of the analysis was purely descriptive: how big is the fraction of our sample which left, or would like to? An infographic-style waffle chart was the best choice to convey meaning keeping sense of scale.
 
-The figure was decomposed by occupation, in order to try and catch at least some hints regarding the social composition of the respective groups.
-
 ```{r}
 #| label: Relationship to Umbria
 #| fig-width: 5
@@ -381,14 +386,9 @@ The figure was decomposed by occupation, in order to try and catch at least some
 ## Rapporto con la regione -----------------------------------------------------
 
 Restare |> 
-  group_by(rapp, occ) |> 
+  group_by(rapp) |> 
   count() |> 
-  mutate(occ = case_match(occ,
-                          'Disoccupat*' ~ 'Unemployed',
-                          'Studente' ~ 'Student',
-                          'Lavorator*' ~ 'Worker',
-                          'Dottorand*' ~ 'PhD candidate'),
-         rapp = case_match(rapp,
+  mutate(rapp = case_match(rapp,
                            'Vorrei restare nel posto in cui vivo' ~
                              'I\'d like to stay where I am',
                            'Sarei contento di vivere e lavorare altrove' ~
@@ -403,20 +403,10 @@ Restare |>
            'I\'d like to leave, but I can\'t',
            'I\'d like to live and work somewhere else'
          ))) |> 
-  ggplot(aes(values = n, label = rapp, colour = rapp)) +
-  geom_pictogram(make_proportional = T, flip = T, size = 5) +
-  scale_label_pictogram(
-    values = c("circle")
-    ) +
-  scale_color_manual(values = met.brewer('Tiepolo', 4)) +
-  facet_wrap(~occ) +
-  labs(title = 'Attitude towards staying') +
-  theme_void() +
-  guides(label=guide_legend(nrow=2, byrow=TRUE)) +
-  theme(legend.title = element_blank(),
-        legend.position = 'bottom',
-        strip.text = element_text(size = 12),
-        plot.title = element_text(size = 20, hjust = .5))
+  waffle(size = 1,
+         flip = T,
+         reverse = T,
+         legend_pos = 'right')
 
 
 ```
