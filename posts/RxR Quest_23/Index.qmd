@@ -1,7 +1,7 @@
 ---
 title: 'RxR Questionnaire - 2023'
 author: 'Lorenzo Mattioli'
-image: RxR orizz Nero.png
+image: copertina_ricerca_Copertina organizzativo.png
 categories:
   - projects
 date: 01 10 2024
