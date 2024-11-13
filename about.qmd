@@ -17,7 +17,7 @@ I have a background in Economics, and am now a Master student in Politics and So
 
 Due to my mixed background, I can count on both solid foundations in data analysis and econometrics and extensive domain knowledge in social sciences.
 
-My main research interests revolve around social stratification and material inequality, but the [Projects](projects.qmd) section of this site will also accommodate some of my less "serious" work, as well as some teaching material.
+My main research interests revolve around social stratification and material inequality, but this site will also accommodate some of my less "serious" work, as well as some teaching material.
 
 ::: {#resume .link style="color: gray;"}
 My complete resume is available [*here:*](CV%20inglese.pdf)
