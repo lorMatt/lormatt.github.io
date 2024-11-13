@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: ""
 lang: en_GB
 listing:
   contents: posts
