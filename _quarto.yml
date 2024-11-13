@@ -13,6 +13,8 @@ website:
         href: index.qmd
       - text: About
         href: about.qmd
+      - text: Projects
+        href: projects.qmd
     right:
       - icon: instagram
         href: https://www.instagram.com/ermattaraus/
