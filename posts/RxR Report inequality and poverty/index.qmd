@@ -17,7 +17,6 @@ date: 15 09 2024
 lightbox: true
 execute: 
   warning: false
-  freeze: true
 ---
 
 ## Introduction

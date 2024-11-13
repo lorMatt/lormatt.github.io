@@ -12,8 +12,6 @@ code-tools:
       source: https://github.com/lorMatt/Formula-1
 image: logo-F1.png
 code-fold: true
-execute: 
-  freeze: true
 ---
 
 ## Formula 1
