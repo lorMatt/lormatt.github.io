@@ -1,6 +1,5 @@
 ---
-title: "Umbria"
-subtitle: 'Principali indicatori demografici'
+title: "Demographical analysis of the Umbria region"
 lang: 'it'
 image: images/Screenshot 2024-11-24 alle 17.18.18.png
 author:
@@ -52,6 +51,10 @@ fecdf <- readRDS('Dati/Export/fecdf.rds')
 ## Mortalità
 umbMort <- readRDS('Dati/Export/umbMort.rds')
 ```
+
+| Exam paper written for an international demography course at the Alma Mater Studiorum - University of Bologna (prof. Rosella Rettaroli). As the exam was held in Italian, the following text is written in the same language.
+
+*Umbria is a moderate-sized region in central Italy. On 1 January 2019, the Umbria population was 882,015. Of these, 13.8% were at least 75 years old [@istat2019]. Made famous by its natural, artistic and cultural heritage, as well as by its curious status as the only region in central Italy not to have any sea frontage, Umbria is a perfect case study for demography. The evolution of the age structure of the Umbrian population anticipated in a certain way the dynamics that later characterised the entire Italian population.*
 
 # Introduzione
 
@@ -165,7 +168,7 @@ girafe(ggobj = etadf |>
   coord_flip() +
   labs(title = 'Età medie',
        caption = 'Dati Demo.Istat') +
-  scale_fill_manual(values = c('#803014', '#148068')) +
+  scale_fill_manual(values = c('#A4D1CA', '#148068')) +
   scale_y_continuous(expand = c(0, 0)) +
   facet_wrap(~Territorio) +
   theme(legend.position = 'bottom',
@@ -217,7 +220,7 @@ girafe(ggobj = etadf |>
   coord_flip() +
   labs(title = 'Indici di indipendenza',
        caption = 'Dati Demo.Istat') +
-  scale_fill_manual(values = c('#803014', '#148068')) +
+  scale_fill_manual(values = c('#A4D1CA', '#148068')) +
   scale_y_continuous(expand = c(0, 0)) +
   facet_wrap(~Territorio) +
   theme(legend.position = 'bottom',
