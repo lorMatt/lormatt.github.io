@@ -246,7 +246,7 @@ girafe(ggobj = etadf |>
          opts_toolbar(hidden = c('selection', 'zoom', 'misc'))))
 ```
 
-Un'ultima considerazione, interessante se non altro altro a titolo di curiosità, riguarda il rapporto di mascolinità: se è vero che questi cresce quando calcolato sull'interezza della popolazione italiana, bisogna osservare come rimanga sostanzialmente stabile a livello regionale. Il motivo potrebbe essere la maggiore inerzia di una popolazione particolarmente anziana.
+Un'ultima considerazione, interessante se non altro altro a titolo di curiosità, riguarda il rapporto di mascolinità: se è vero che cresce quando calcolato sull'interezza della popolazione italiana, bisogna osservare come rimanga sostanzialmente stabile a livello regionale. Il motivo potrebbe essere la maggiore inerzia di una popolazione particolarmente anziana.
 
 ```{r}
 #| label: Indici
@@ -316,7 +316,7 @@ Il bilancio migratorio umbro durante i 22 anni fra il 2002 e il 2024 è generalm
 
 ## Saldi migratori
 
-In generale, l'andamento del saldo migratorio umbro va di pari passo con quello nazionale, caratterizzato da due picchi nel 2003 (in corrispondenza dell'introduzione della legge Bossi-Fini) e nel 2007 (anno di ulteriori sanatorie, contemporanee all'entrata della Romania nell'Unione Europea). È interessante l'avvallamento del saldo migratorio totale fra il 2018 e il 2020, indipendente dal saldo migratorio interno e da quello con l'estero. Il motivo di questo scoppiamento è con tutta probabilità dovuto a problemi definitori e di conteggio: Il saldo migratorio con l'estero non tiene conto di alcuni specifici fenomeni emigratori, su tutti i rimpatri. Nel 2018, per mezzo dei decreti sicurezza, c'è stato un notevole aumento di questo tipo di evento demografico, che potrebbe aver contribuito a causare lo scoppiamento di cui sopra, rientrato solamente nel 2022.
+In generale, l'andamento del saldo migratorio umbro va di pari passo con quello nazionale, caratterizzato da due picchi nel 2003 (in corrispondenza dell'introduzione della legge Bossi-Fini) e nel 2007 (anno di ulteriori sanatorie, contemporanee all'entrata della Romania nell'Unione Europea). È interessante l'avvallamento del saldo migratorio totale fra il 2018 e il 2020, indipendente dal saldo migratorio interno e da quello con l'estero. Il motivo di questo disacoppiamento è con tutta probabilità dovuto a problemi definitori e di conteggio: Il saldo migratorio con l'estero non tiene conto di alcuni specifici fenomeni emigratori, su tutti i rimpatri. Nel 2018, per mezzo dei decreti sicurezza, c'è stato un notevole aumento di questo tipo di evento demografico, che potrebbe aver contribuito a causare lo didsacoppiamento di cui sopra, rientrato solamente nel 2022.
 
 ```{r}
 #| label: Migrazione - serie storica
