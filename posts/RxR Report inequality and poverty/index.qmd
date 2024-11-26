@@ -9,7 +9,7 @@ format:
     toc: true
     page-layout: full
     code-tools: 
-      source: https://github.com/lorMatt/SHIW-BI-2024
+      source: 'https://github.com/lorMatt/SHIW-BI-2024.git'
     code-fold: true
     code-summary: 'Show code'
 editor: visual
