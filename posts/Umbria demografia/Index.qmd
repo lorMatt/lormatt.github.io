@@ -1,5 +1,5 @@
 ---
-title: "Demographical analysis of the Umbria region"
+title: "Demographic analysis of the Umbria region"
 lang: 'it'
 categories:
   - projects
