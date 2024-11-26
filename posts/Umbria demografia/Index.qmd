@@ -59,7 +59,7 @@ umbMort <- readRDS('Dati/Export/umbMort.rds')
 
 ------------------------------------------------------------------------
 
-Check out the quarto presentation on the topic:
+Check out my quarto presentation on the topic:
 
 {{< revealjs file="Mattioli_pres.html" height="500px" class="ratio ratio-16x9">}}
 
