@@ -1,9 +1,7 @@
 ---
-title: "Demographic analysis of the Umbria region"
+title: "Umbria"
+subtitle: 'Principali indicatori demografici'
 lang: 'it'
-categories:
-  - projects
-image: images/Screenshot 2024-11-24 alle 17.18.18.png
 author:
   - name: 'Lorenzo Mattioli'
     affiliations:
@@ -13,8 +11,9 @@ toc: true
 toc-expand: 2
 format:
   html:
+    repo: 'https://github.com/lorMatt/internationalDemography.git'
     code-tools:
-      source: 'https://github.com/lorMatt/internationalDemography.git'
+      source: true
     self-contained: true
     code-fold: true
 editor: visual
@@ -51,6 +50,9 @@ fecdf <- readRDS('Dati/Export/fecdf.rds')
 
 ## Mortalità
 umbMort <- readRDS('Dati/Export/umbMort.rds')
+
+## Previsioni
+umPrev <- readRDS('Dati/Export/umPrev.rds')
 ```
 
 ::: {style="color: gray; padding: 12px"}
@@ -69,7 +71,28 @@ Check out my <a href="Mattioli_pres.html" target="_blank" rel="noopener noreferr
 
 # Introduzione
 
-L'Umbria è una regione di dimensioni moderate del Centro Italia. Al 1° gennaio 2019, la popolazione umbra ammontava a 882.015 residenti. Di questi, il 13,8% aveva almeno 75 anni [@istat2019]. Resa celebre dal proprio patrimonio naturalistico, artistico e culturale, nonché per la curiosa condizione di unica regione dell'Italia centrale a non avere alcun affaccio sul mare, l'Umbria è un perfetto caso di studio per la demografia. L'evoluzione della struttura per età della popolazione umbra ha anticipato in un certo qual modo le dinamiche che hanno poi caratterizzato quella italiana nella sua interezza.
+L'Umbria è una regione di dimensioni moderate del Centro Italia. Al 1° gennaio 2019, la popolazione umbra ammontava a 882.015 residenti. Di questi, il 13,8% aveva almeno 75 anni [@istat2019]. Secondo le ultime previsioni Istat, la popolazione umbra seguirà una decisa parabola discendente mano a mano che ci si avvicinerà al 2050.
+
+Resa celebre dal proprio patrimonio naturalistico, artistico e culturale, nonché per la curiosa condizione di unica regione dell'Italia centrale a non avere alcun affaccio sul mare, l'Umbria è un perfetto caso di studio per la demografia. L'evoluzione della struttura per età della popolazione umbra ha anticipato in un certo qual modo le dinamiche che hanno poi caratterizzato quella italiana nella sua interezza.
+
+```{r}
+#| label: Previsioni di popolazione al 2050
+
+umPrev |> 
+  ggplot(aes(x = Anno)) +
+  geom_ribbon(aes(ymin = `Limite inferiore intervallo di confidenza al 90% (5° percentile)`,
+                  ymax = `Limite superiore intervallo di confidenza al 90% (95° percentile)`), fill = 'gray90') +
+  geom_line(aes(y = `Scenario mediano`), linetype = 1) +
+  labs(title = 'Previsioni di popolazione al 2050',
+       subtitle = 'Regione Umbria',
+       caption = 'Dati Demo.Istat') +
+  theme(legend.position = 'bottom',
+        panel.background = element_blank(),
+        panel.grid = element_line(colour = 'gray90'),
+        legend.title = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank())
+```
 
 Un fattore da tenere a mente è che le dinamiche di popolazione che in questo documento sono considerate a livello regionale sono in realtà valori medi di una situazione fortemente diseguale. Un diffuso fenomeno di abbandono e migrazione interna del (pede-)montano e delle campagne da parte delle fasce giovani della popolazione ha comportato negli ultimi anni la concentrazione degli individui più anziani nelle aree rurali.
 
@@ -257,7 +280,7 @@ girafe(ggobj = etadf |>
          opts_toolbar(hidden = c('selection', 'zoom', 'misc'))))
 ```
 
-Un'ultima considerazione, interessante se non altro altro a titolo di curiosità, riguarda il rapporto di mascolinità: se è vero che cresce quando calcolato sull'interezza della popolazione italiana, bisogna osservare come rimanga sostanzialmente stabile a livello regionale. Il motivo potrebbe essere la maggiore inerzia di una popolazione particolarmente anziana.
+Alcune ultime considerazioni riguardano il rapporto di mascolinità. Sia quando calcolato sull'intera popolazione italiana, sia quando ristretto solamente alla regione Umbria, questo indicatore presenta uno squilibrio verso i maschi ad età zero ed uno verso le femmine nella popolazione totale. Questo significa che se è vero che nascono più uomini che donne, è anche vero che i primi tendono ad essere eliminati più facilmente dalla mortalità, portando il rapporto a pendere verso le seconde.
 
 ```{r}
 #| label: Indici
@@ -272,9 +295,10 @@ etadf |>
          'Vecchiaia' = round(dipVec, 2),
          'Complessivo' = round(dip, 2),
          'Indice di vecchiaia' = round(vec, 2),
-         'Rapporto di mascolinità' = round(rapMasc, 2)
-         ) |> 
-  select(Territorio, Femmine, Maschi, Totale, Giovanile, Vecchiaia, Complessivo, `Indice di vecchiaia`, `Rapporto di mascolinità`) |> 
+         'Popolazione' = round(rapMasc, 2),
+         'Età 0' = round(rapMasc0, 2)
+  ) |> 
+  select(Territorio, Femmine, Maschi, Totale, Giovanile, Vecchiaia, Complessivo, `Indice di vecchiaia`, `Popolazione`, `Età 0`) |> 
   gt(rowname_col = 'Territorio') |> 
   tab_stubhead(
     label = 'Anno'
@@ -290,7 +314,7 @@ etadf |>
   tab_header(
     title = md('## Indici di popolazione'),
     subtitle = md('Per **anno** e **territorio**')
-             ) |> 
+  ) |> 
   tab_spanner(
     label = 'Età media',
     columns = c(Femmine, Maschi, Totale)
@@ -299,12 +323,16 @@ etadf |>
     label = 'Indice di dipendenza',
     columns = c(Giovanile, Vecchiaia, `Complessivo`)
   ) |> 
+  tab_spanner(
+    label = 'Rapporto di mascolinità',
+    columns = c(Popolazione, `Età 0`)
+  ) |> 
   tab_source_note(
     source_note = 'Dati Demo.Istat'
   ) |> 
   cols_align(
     align = 'center',
-    columns = 3:9
+    columns = 3:10
   ) |>
   cols_align(
     align = 'left',
@@ -327,7 +355,7 @@ Il bilancio migratorio umbro durante i 22 anni fra il 2002 e il 2024 è generalm
 
 ## Saldi migratori
 
-In generale, l'andamento del saldo migratorio umbro va di pari passo con quello nazionale, caratterizzato da due picchi nel 2003 (in corrispondenza dell'introduzione della legge Bossi-Fini) e nel 2007 (anno di ulteriori sanatorie, contemporanee all'entrata della Romania nell'Unione Europea). È interessante l'avvallamento del saldo migratorio totale fra il 2018 e il 2020, indipendente dal saldo migratorio interno e da quello con l'estero. Il motivo di questo disacoppiamento è con tutta probabilità dovuto a problemi definitori e di conteggio: Il saldo migratorio con l'estero non tiene conto di alcuni specifici fenomeni emigratori, su tutti i rimpatri. Nel 2018, per mezzo dei decreti sicurezza, c'è stato un notevole aumento di questo tipo di evento demografico, che potrebbe aver contribuito a causare lo didsacoppiamento di cui sopra, rientrato solamente nel 2022.
+In generale, l'andamento del saldo migratorio umbro va di pari passo con quello nazionale, caratterizzato da due picchi nel 2003 (in corrispondenza dell'introduzione della legge Bossi-Fini) e nel 2007 (anno di ulteriori sanatorie, contemporanee all'entrata della Romania nell'Unione Europea). È interessante l'avvallamento del saldo migratorio totale fra il 2018 e il 2020, indipendente dal saldo migratorio interno e da quello con l'estero. Il motivo di questo disacoppiamento è con tutta probabilità dovuto a problemi definitori e di conteggio: Il saldo migratorio con l'estero non tiene conto di alcuni specifici fenomeni emigratori, su tutti i rimpatri. Nel 2018, per mezzo dei decreti sicurezza, c'è stato un notevole aumento di questo tipo di evento demografico, che potrebbe aver contribuito a causare il disaccoppiamento di cui sopra, rientrato solamente nel 2022.
 
 ```{r}
 #| label: Migrazione - serie storica
