@@ -3,6 +3,7 @@ title: "Umbria"
 subtitle: 'Principali indicatori demografici'
 image: images/Screenshot 2024-11-24 alle 17.18.18.png
 lang: 'it'
+date: 05 12 2024
 author:
   - name: 'Lorenzo Mattioli'
     affiliations:

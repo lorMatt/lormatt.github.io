@@ -15,7 +15,7 @@ image: img.png
 code-fold: true
 ---
 
-::: {style="color: gray; padding: 12px"}
+::: {style="color: gray; padding: 22px"}
 | On January 4th, 2025, the association *una Regione per Restare - RxR* organised a three day long training event. On this occasion, I was asked to give a workshop on methodology and methods of social research. The result was a two-hour long session, packed with activities and stimulating possibilities for exchanging ideas.
 | Keynote and material available at [this github repo](https://github.com/lorMatt/Workshop-ricerca-soc.git) (also linked as this article's source code).
 :::
