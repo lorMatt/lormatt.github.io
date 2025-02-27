@@ -4,9 +4,7 @@ author: 'Lorenzo Mattioli'
 categories:
   - projects
 date: 27 02 2025
-format:
-  html:
-    toc: true
+format: html
 lang: en_UK
 code-tools: 
       source: https://github.com/lorMatt/UmbriaPress-corpus.git
