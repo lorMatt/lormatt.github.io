@@ -11,7 +11,7 @@ lang: en_UK
 code-tools: 
       source: https://github.com/lorMatt/UmbriaPress-corpus.git
       
-# image: img.png
+image: img.png
 code-fold: true
 ---
 
