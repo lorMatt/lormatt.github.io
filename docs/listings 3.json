@@ -1,0 +1,31 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/Web scraping/index.html",
+      "/blog/Workshop ricerca sociale/index.html",
+      "/blog/Formula 1/index.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/UmbriaPress corpus/index.html",
+      "/projects/Umbria demografia/Index.html",
+      "/projects/RxR Quest_23/Index.html",
+      "/projects/RxR Report inequality and poverty/index.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/blog/Web scraping/index.html",
+      "/projects/UmbriaPress corpus/index.html",
+      "/blog/Workshop ricerca sociale/index.html",
+      "/projects/Umbria demografia/Index.html",
+      "/projects/RxR Quest_23/Index.html",
+      "/projects/RxR Report inequality and poverty/index.html",
+      "/blog/Formula 1/index.html"
+    ]
+  }
+]
