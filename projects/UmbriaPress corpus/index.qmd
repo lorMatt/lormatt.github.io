@@ -1,0 +1,114 @@
+---
+title: "UmbriaPress Corpus"
+author: 'Lorenzo Mattioli'
+categories:
+  - Natural language processing
+  - Web scraping
+  - Umbria
+  - Data visualisation
+  - Interactive
+date: 27 02 2025
+format: html
+lang: en_UK
+code-tools: 
+      source: https://github.com/lorMatt/UmbriaPress-corpus.git
+      
+image: img.png
+code-fold: true
+---
+
+```{r}
+#| label: 'Setup'
+#| echo: false
+#| output: false
+
+
+if (!require("pacman")) install.packages("pacman")
+library(pacman)
+p_load(tidyverse, patchwork, ggiraph)
+
+# Data import ------------------------------------------------------------------
+time_art_data <- read_csv("time_art_data.csv")
+reg_art_data <- read_csv("reg_art_data.csv")
+
+# Descriptives -----------------------------------------------------------------
+## graphics ----
+### palette ----
+pal <- c(
+  "#FDA638",
+  "#459395",
+  "#EB7C69"
+)
+na_col <- "#866f85"
+
+### theming ----
+theme_set(theme(panel.background = element_blank(),
+                axis.ticks = element_blank(),
+                legend.title = element_blank(),
+                panel.grid.major = element_line(linetype = 'solid', colour = 'gray97', linewidth = .3),
+                panel.grid.minor = element_blank(),
+                axis.line.x = element_line(colour = 'gray25'),
+                axis.line.y = element_line(colour = 'gray25')))
+```
+
+**UmbriaPress** is a corpus of press releases by three major news outlets in Umbria: *Corriere dell'Umbria*, *PerugiaToday*, *Terninrete*.
+
+Expected use cases are:
+
+-   NLP modelling exercises and training
+
+-   Public discourse analysis
+
+The complete corpus can be downloaded at this [link](https://drive.google.com/file/d/1FaPcCt0etc_rBmKKLJste-D-kVWaIKDl/view?usp=sharing). All resources (including the source code for the scrapers and the visualisation below) are available by clicking on the *Code* box at the top of this page.
+
+## Corpus description
+
+The articles are categorised by city (Terni/Perugia) and time stamped. Since *PerugiaToday* assigns a main tag to each article, I decided to include those as well in the dataset.
+
+The corpus amounts to a grand total of 168,528 articles. It is, however, rather diverse (thus potentially biased) in terms of regional coverage and language type. The two "fast journalism" outlets (*PerugiaToday*, *Terninrete*) completely flood the corpus, making the more traditionally managed *Corriere dell'Umbria* basically invisible. Perugia is vastly overrepresented, and there is a visible bias towards more recent articles.
+
+Below, an interactive visualisation of the corpus' composition:
+
+```{r}
+#| label: 'Descriptives viz'
+#| echo: false
+#| warning: false
+
+## Distribution of articles over time ----
+time_art <- time_art_data |> 
+  ggplot(aes(month, n, fill = newspaper, data_id = month,tooltip = n)) +
+  geom_col_interactive(position = 'stack', width = 70) +
+  theme(axis.line.y = element_blank()) +
+  scale_x_date(limits = c(as_date(as_date('1 January 2011', format = "%d %B %Y")), NA))
+
+## Regional composition ----
+reg_art <- reg_art_data |> 
+  ggplot(aes(city, n, fill = newspaper, data_id = city, tooltip = n)) +
+  coord_flip() +
+  theme(axis.line.x = element_blank()) +
+  geom_col_interactive()
+
+## Patchwork ----
+p <- time_art / reg_art +
+  plot_layout(guides = 'collect', heights  = c(8,1)) &
+  plot_annotation(title = 'Article distribution over time',
+                  subtitle = 'By newspaper and city') &
+  scale_y_continuous(expand = c(0,0)) &
+  scale_fill_manual(values = pal, na.value = na_col) &
+  theme(legend.position = 'bottom',
+        axis.title = element_blank())
+
+### interactive 
+girafe(ggobj = p, width_svg = 8,
+       options = list(
+         opts_hover(css = ''), ## CSS code of line we're hovering over
+         opts_hover_inv(css = "opacity:0.3;"), ## CSS code of all other lines
+         opts_tooltip(css = "background-color:white;
+                      color:black;
+                      font-family:Helvetica;
+                      font-style:empty;
+                      padding:8px;
+                      border-radius:10px;",
+                      use_cursor_pos = T),
+         opts_toolbar(position = 'bottomright')))
+```
