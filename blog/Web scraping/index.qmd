@@ -22,7 +22,7 @@ When I had to choose the topic and methods for my Master's thesis, I decided it 
 
 ------------------------------------------------------------------------
 
-In this article, we will be using the local newspaper *Terninrete* as an example. You can find the entire corpus I built with these methods at this [link](https://lormatt.github.io/posts/UmbriaPress%20corpus/), and the complete code for all the scrapers through the `</> Code` button at the top of this page.
+In this article, we will be using the local newspaper *Terninrete* as an example. You can find the entire corpus I built with these methods at this [link](https://lormatt.github.io/projects/UmbriaPress%20corpus/), and the complete code for all the scrapers through the `</> Code` button at the top of this page.
 
 ## *Parsing* or *scraping*?
 
@@ -257,4 +257,4 @@ TRinrete <- TRinrete_ |> rbind(TRinrete)
 
 # What's in it for us?
 
-After all this hard work, what we're left with is a machine-readable, easy-to-navigate tibble of free data to do some exciting analysis on. Once again, the data I scraped is readily available at this [link](https://lormatt.github.io/posts/UmbriaPress%20corpus/), and the source codes (which very much reflect my learning curve) can be found through the `</> Code` button at the top of this page.
+After all this hard work, what we're left with is a machine-readable, easy-to-navigate tibble of free data to do some exciting analysis on. Once again, the data I scraped is readily available at this [link](https://lormatt.github.io/projects/UmbriaPress%20corpus/), and the source codes (which very much reflect my learning curve) can be found through the `</> Code` button at the top of this page.
