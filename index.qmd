@@ -5,7 +5,6 @@ listing:
   contents:
     - projects
     - blog
-    - teaching
   sort: "date desc"
   type: grid
   max-items: 3
