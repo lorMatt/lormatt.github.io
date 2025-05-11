@@ -11,7 +11,7 @@ format:
   html:
     toc: true
 lang: en_UK
-image: graph.png
+image: img.png
 bibliography: references.bib
 ---
 
