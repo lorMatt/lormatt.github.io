@@ -37,7 +37,7 @@ I will **not** discuss the ethics of web scraping in this article. If you are ju
 ::: {.callout-warning collapse="true"}
 # What I assume you already know
 
-You'll need to already be well versed in R to understand the content of this blog post. If you're not familiar with R programming, I really recommend the [R for Data Science](https://r4ds.hadley.nz) manual. If you want some more step-by-step instructions on how to go about computational social science stuff, I found Felix Lennert's [tutorials](https://bookdown.org/f_lennert/toolbox-quarto-book/) to be very helpful.
+You'll need to already be well versed in R to understand the content of this blog post. If you're not familiar with R programming, I really recommend the [R for Data Science](https://r4ds.hadley.nz) manual. If you want some more step-by-step instructions on how to go about computational social science stuff, I found Felix Lennert's [tutorials](https://bookdown.org/f_lennert/toolbox-quarto-book/) very helpful.
 :::
 
 # Workflow
