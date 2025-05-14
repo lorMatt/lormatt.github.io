@@ -5,7 +5,7 @@ author: 'Lorenzo Mattioli'
 categories:
   - Tutorials
   - Natural language processing
-  - Word embeddings
+  - Relational data
 date: 10 05 2025
 format:
   html:
@@ -29,7 +29,7 @@ You'll need to already be well versed in R to understand the content of this blo
 
 ## Get to meaning through a machine
 
-The whole point of Natural Language Processing (in the context of social sciences) is to understand and/or analyse very large bodies of text quickly and efficiently. A very important aspect of a text is the relationship between words. We're not simply interested in counting occurrences of single words or *tokens*; we'd also like to see which two or three words occur together (co-occur) in our corpus. Once we know that, there are rather easy ways to get a computer to build semantic spaces for you to
+The whole point of Natural Language Processing (in the context of social sciences) is to understand and/or analyse very large bodies of text quickly and efficiently. A very important aspect of a text is the relationship between words. We're not simply interested in counting occurrences of single words or *tokens*; we'd also like to see which two or three words occur together (co-occur) in our corpus.
 
 In this article, we'll be looking at a couple distinct ways to do just that, starting with the most basic retrieval approach (KeyWords In Context - KWIC) and then moving on to the more exciting options of graphing co-occurrences.
 
