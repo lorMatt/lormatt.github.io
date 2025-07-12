@@ -1,0 +1,40 @@
+---
+title: "Trajectories of local development and public opinion"
+subtitle: "Environmental policy in Umbria"
+author:
+  - name: 'Lorenzo Mattioli'
+    email: lorenzomattioli@protonmail.com
+  - name: 'Marco Albertini (supervisor)'
+    orcid: 0000-0003-0344-3002
+  - name: 'Arianna Tassinari (co-supervisor)'
+    orcid: 0000-0001-5437-935X
+date: "07/18/2025"
+search: true
+categories:
+  - Natural language processing
+  - Web scraping
+  - Umbria
+  - Data visualisation
+  - Interactive
+format: html
+lang: en_UK
+      
+image: img.png
+---
+
+::: {style="color: gray; padding: 12px"}
+This work marked the end of my two-year journey as a master student of Politics and Social Policy at the University of Bologna. It represents the result of approximately a year of work between a healthy amount of desk research, data collection, data analysis, and finally writing it all down. Initially an excuse to get accustomed to computational methods for social sciences and Natural Language Processing (NLP), it quickly turned into an opportunity to rekindle my personal connection with my home town.
+:::
+
+::: {style="text-align: center; padding: 24px"}
+[Check it out!](https://lormatt.github.io/Master-thesis/){.btn .btn-outline-primary .btn role="button"}
+:::
+
+
+## What are we talking about?
+
+According to Eurobarometer 2023, 77% of all Europeans believe that climate change is a “very serious” problem. Why is it, then, that rallying political support behind the energy transition is so difficult? My claim is that the main reason is not ideological. Instead, the cause for resistance towards the energy transition is that people fear for their jobs.
+
+The energy transition is not a neutral process. While some industries would come out of it more or less unscathed, others would need to undergo considerable change or even face the risk of closing down altogether. The latter are often called *brown* industries, and are defined by their reliance on fossil fuels and non-renewable energy in general. The workers employed in brown industries are hence prone to feel like their livelihood and way of life is put under siege by a transition which could render their jobs obsolete, redundant, or useless. This outcome has the extremely human consequence of provoking a feeling of *loss* in those who go through it.
+
+The condition of *brown* workers becomes even more interesting when we look at it at a collective level. Many of those employed in quintessentially *brown* industries tend to concentrate geographically, due to the very nature of the processes they take part in. As Jackson and Grusky put it in their Post-liberal Theory of Social Stratification, concentrated loss leads to its politicisation. What this means in this particular instance is that brown workers might translate their feeling of loss into zero-sum arguments against environmental policy, treating it in essence as a covert redistributional measure taking resources from industrial towns and giving them out to someone else. Whether this is the intention or even the actual outcome of environmental policy is of no importance whatsoever, expecially in a context, like the European one, in which deindustrialisation is often noxious, detrimental to the well-being of former industrial workers and their towns. What all of this means is that I hypothesise a relationship between the *exposure*, or vulnerability of a region’s labour market to the energy transition and the public opinion on environmental policy in that same region.

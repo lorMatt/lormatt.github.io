@@ -12,6 +12,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/Master's thesis/index.html",
       "/projects/UmbriaPress corpus/index.html",
       "/projects/Umbria demografia/Index.html",
       "/projects/RxR Quest_23/Index.html",
@@ -21,6 +22,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/projects/Master's thesis/index.html",
       "/blog/Word embeddings/index.html",
       "/blog/Finding meaning between words/index.html",
       "/blog/Web scraping/index.html",
