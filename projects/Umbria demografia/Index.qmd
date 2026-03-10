@@ -1,6 +1,6 @@
 ---
 title: "Umbria - Principali indicatori demografici"
-image: images/img.png
+image: img.png
 lang: 'it'
 categories:
   - Demography
