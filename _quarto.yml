@@ -3,6 +3,7 @@ project:
   output-dir: docs
 
 website:
+  site-url: "https://lormatt.github.io"
   cookie-consent: true
   bread-crumbs: true
   title: "Lorenzo Mattioli"
@@ -26,8 +27,12 @@ website:
         href: mailto:lorenzo.mattioli5@studio.unibo.it
 format:
   html:
+    embed-resources: true
     theme: simplex
     css: styles.css
 
+execute:
+  freeze: auto
+  
 editor: visual
 
