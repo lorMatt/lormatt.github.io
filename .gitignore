@@ -1,5 +1,4 @@
 /.quarto/
 .Rproj.user
-docs/site_libs/
 _freeze/
 .DS_Store
