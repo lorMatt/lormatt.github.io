@@ -30,7 +30,6 @@ This work marked the end of my two-year journey as a master student of Politics 
 [Check it out!](https://lormatt.github.io/Master-thesis/){.btn .btn-outline-primary .btn role="button"}
 :::
 
-
 ## What are we talking about?
 
 According to Eurobarometer 2023, 77% of all Europeans believe that climate change is a “very serious” problem. Why is it, then, that rallying political support behind the energy transition is so difficult? My claim is that the main reason is not ideological. Instead, the cause for resistance towards the energy transition is that people fear for their jobs.
