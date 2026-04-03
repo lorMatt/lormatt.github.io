@@ -27,7 +27,7 @@ website:
         href: mailto:lorenzo.mattioli5@studio.unibo.it
 format:
   html:
-    embed-resources: false
+    embed-resources: true
     theme: simplex
     css: styles.css
 
