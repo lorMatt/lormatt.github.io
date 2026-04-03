@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - "Mattioli_CV.pdf"
 
 website:
   site-url: "https://lormatt.github.io"
