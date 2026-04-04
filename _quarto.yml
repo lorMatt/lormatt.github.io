@@ -3,6 +3,8 @@ project:
   output-dir: docs
   resources:
     - "Mattioli_CV.pdf"
+    - "blog/**/*.pdf"
+    - "projects/**/*.pdf"
 
 website:
   site-url: "https://lormatt.github.io"
