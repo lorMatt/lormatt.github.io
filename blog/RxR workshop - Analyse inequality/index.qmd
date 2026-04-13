@@ -232,7 +232,7 @@ lpmresults <- lpmresults |>
 lpmresults$vars <- c('Intercetta', 'Titolo di studio', 'Titolo di studio', 'Titolo di studio', 'Titolo di studio', 'Titolo di studio', 'Sesso', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale', 'Settore economico dell\'occupazione principale')
 ```
 
-Ad Aprile 2026 ho tenuto un workshop di introduzione ai metodi della ricerca sociale nel campo delle disuguaglianze economiche.
+Ad Aprile 2026 ho tenuto un workshop di metodi della ricerca sociale nel campo delle disuguaglianze economiche.
 
 Di seguito i link al notebook con i codici sorgente:
 
