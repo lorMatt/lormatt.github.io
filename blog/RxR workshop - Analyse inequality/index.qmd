@@ -3,6 +3,7 @@ title: "Workshop - analyse inequality"
 author: 'Lorenzo Mattioli'
 lang: en_GB
 categories:
+  - Teaching
   - Income inequality
   - Umbria
   - Data visualisation
