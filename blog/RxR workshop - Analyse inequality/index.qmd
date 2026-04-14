@@ -482,5 +482,3 @@ girafe(ggobj = gglpm,
          opts_toolbar(position = 'bottomright')))
 
 ```
-
-## Course material
