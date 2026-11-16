@@ -10,7 +10,7 @@ about:
     - icon: github
       href: https://github.com
     - icon: envelope
-      href: mailto:lorenzomattioli@protonmail.com
+      href: mailto:lorenzo.mattioli@unimi.it
 ---
 
 # About me
